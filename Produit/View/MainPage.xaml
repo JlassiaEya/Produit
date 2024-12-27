@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Produit.View_Model"
+             x:Class="Produit.View.MainPage"
+             Title="Liste des Produits">
+
+
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Liste des Produits"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Button Text="Ajouter un produit"
+                    Command="{Binding OnButtonClickedCommand}"
+                    CommandParameter="AddProduct"
+                    HorizontalOptions="End"
+                    BackgroundColor="LightGreen"
+                    TextColor="White" />
+
+               <Grid RowSpacing="10" ColumnSpacing="15" Padding="10" BackgroundColor="WhiteSmoke">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Libellé"
+                       FontAttributes="Bold"
+                       Grid.Row="0"
+                       Grid.Column="1" />
+                <Label Text="Qté"
+                       FontAttributes="Bold"
+                       Grid.Row="0"
+                       Grid.Column="2" />
+                <Label Text="Prix"
+                       FontAttributes="Bold"
+                       Grid.Row="0"
+                       Grid.Column="3" />
+                <Label Text="Actions"
+                       FontAttributes="Bold"
+                       Grid.Row="0"
+                       Grid.Column="4" />
+            </Grid>
+
+            <CollectionView ItemsSource="{Binding Produits}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnSpacing="15" RowSpacing="10" Padding="10" BackgroundColor="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                           
+                            <Label Text="{Binding Libelle}" 
+                                   FontSize="16"  
+                                   Grid.Row="0"
+                                   Grid.Column="1" />
+                            <Label Text="{Binding Qt}" 
+                                   FontSize="14"  
+                                   Grid.Row="0"
+                                   Grid.Column="2" />
+                            <Label Text="{Binding Prix}" 
+                                   FontSize="14" 
+                                   TextColor="Green" 
+                                   Grid.Row="0"
+                                   Grid.Column="3" />
+
+                            <HorizontalStackLayout Grid.Row="0" Grid.Column="4" Spacing="10">
+                                <Button Text="Modifier"
+                Command="{Binding EditCommand}"
+                CommandParameter="{Binding SelectedProduit}"
+                BackgroundColor="LightBlue"
+                TextColor="White"
+                Padding="5" />
+                                <Button Text="Supprimer"
+        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=DeleteCommand}"
+        CommandParameter="{Binding IdProd}"
+        BackgroundColor="Red"
+        TextColor="White"
+        Padding="5" />
+
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

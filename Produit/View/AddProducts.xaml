@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Produit.View.AddProducts"
+             Title="Ajouter un produit">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Ajouter un Produit"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            
+            <VerticalStackLayout>
+                <Label Text="Libellé"
+                       FontSize="16"
+                       FontAttributes="Bold" />
+                <Entry Placeholder="Entrez le libellé du produit"
+                       Text="{Binding Libelle}" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Label Text="Quantité"
+                       FontSize="16"
+                       FontAttributes="Bold" />
+                <Entry Placeholder="Entrez la quantité"
+                       Keyboard="Numeric"
+                       Text="{Binding Qt}" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Label Text="Prix"
+                       FontSize="16"
+                       FontAttributes="Bold" />
+                <Entry Placeholder="Entrez le prix"
+                       Keyboard="Numeric"
+                       Text="{Binding Prix}" />
+            </VerticalStackLayout>
+
+            <Button Text="Ajouter"
+                    Command="{Binding AddProductCommand}"
+                    BackgroundColor="LightGreen"
+                    TextColor="White"
+                    HorizontalOptions="Center" />  
+       
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

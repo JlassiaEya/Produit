@@ -1,0 +1,1 @@
+C:\Users\PROBOOK\source\repos\ProduitCore\Produit\Produit.csproj;x64
